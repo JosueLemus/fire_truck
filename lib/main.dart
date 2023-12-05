@@ -5,13 +5,17 @@ import 'package:bomberman/firebase_options.dart';
 import 'package:bomberman/presentation/screens/splash_screen.dart';
 import 'package:bomberman/config/services/background_services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await initializeService();
-  runApp(MyApp());
+  final token = await FirebaseMessaging.instance.getToken();
+  print(token);
+  // await initializeService();
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

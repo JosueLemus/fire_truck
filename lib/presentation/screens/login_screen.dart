@@ -1,6 +1,8 @@
 import 'package:bomberman/config/navigation/application_routes.dart';
 import 'package:bomberman/config/services/api_services.dart';
 import 'package:bomberman/config/services/local_storage_services.dart';
+import 'package:bomberman/presentation/widgets/custom_dialog.dart';
+import 'package:bomberman/presentation/widgets/custom_textfield.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -198,82 +200,6 @@ class LoginScreenState extends State<LoginScreen> {
                 child: CircularProgressIndicator(),
               ),
             )
-        ],
-      ),
-    );
-  }
-}
-
-class CustomTextField extends StatefulWidget {
-  final IconData? leftIcon;
-  final bool isPassword;
-  final String? placeholder;
-  final String? errorText;
-  final TextEditingController? controller;
-  final void Function(String)? onChanged;
-
-  const CustomTextField({
-    Key? key,
-    this.leftIcon,
-    this.isPassword = false,
-    this.placeholder,
-    this.errorText,
-    this.controller,
-    this.onChanged, // Agregado
-  }) : super(key: key);
-
-  @override
-  _CustomTextFieldState createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
-  bool isObscureText = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextField(
-          controller: widget.controller,
-          obscureText: widget.isPassword && isObscureText,
-          onChanged: widget.onChanged, // Pasar onChanged al TextField
-          decoration: InputDecoration(
-            labelText: widget.placeholder,
-            prefixIcon: widget.leftIcon != null ? Icon(widget.leftIcon) : null,
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    icon: Icon(
-                      isObscureText ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isObscureText = !isObscureText;
-                      });
-                    },
-                  )
-                : null,
-            errorText: widget.errorText,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CustomDialog {
-  static void showErrorDialog(
-      BuildContext context, String title, String content) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
-          ),
         ],
       ),
     );

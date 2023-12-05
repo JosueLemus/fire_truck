@@ -48,7 +48,7 @@ dependencies:
   connectivity_plus: ^5.0.1
   sqflite: ^2.3.0
   intl: ^0.18.1
-  firebase_messaging: ^14.6.4
+  firebase_messaging: ^14.7.6
   animate_do: ^3.0.2
   geolocator: ^10.1.0
   google_maps_flutter: ^2.5.0
