@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:bomberman/presentation/screens.dart';
+import 'package:bomberman/presentation/screens/notifications_screen.dart';
 import 'package:bomberman/presentation/widgets/local_notification_card.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +63,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1:
         return const Center(child: Text("Contenido del historial"));
       case 2:
-        return const Center(child: Text("Contenido de notificaciones"));
+        return NotificationScreen();
       case 3:
-        return const Center(child: Text("Contenido del perfil"));
+        return const ProfileScreen();
       default:
         return Container();
     }

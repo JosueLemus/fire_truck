@@ -59,7 +59,7 @@ class LoginScreenState extends State<LoginScreen> {
           await apiServices.postTokenDevice(hash, token);
           // Si todo sale bien
           if (mounted) {
-            Navigator.pushNamed(context, Routes.main);
+            Navigator.pushReplacementNamed(context, Routes.main);
           }
         }
       } else {
@@ -179,7 +179,8 @@ class LoginScreenState extends State<LoginScreen> {
                         Text(signUpText),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, Routes.main);
+                            Navigator.pushReplacementNamed(
+                                context, Routes.main);
                           },
                           child: const Text("Regístrate"),
                         ),
